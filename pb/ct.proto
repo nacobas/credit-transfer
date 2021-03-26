@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "github.com/nacobas/credit-transfer/pb";
+
+
+service CreditTrasfer {
+    rpc Deposit (DepositRequest) returns (DepositResponse);
+    rpc Withdraw (WithdrawRequest) returns (WithdrawResponse);
+    rpc Balance (BalanceRequest) returns (BalanceResponse);
+}
+
+message DepositRequest {
+    uint64 amount = 1;
+    string account_id = 2;
+}
+
+message DepositResponse {
+    int64 balance = 1;
+}
+
+message WithdrawRequest {
+    uint64 amount = 1;
+    string account_id = 2;
+}
+
+message WithdrawResponse {
+    int64 balance = 1;
+}
+
+message BalanceRequest {
+    string account_id = 1;
+}
+
+message BalanceResponse {
+    int64 balance = 1;
+}
